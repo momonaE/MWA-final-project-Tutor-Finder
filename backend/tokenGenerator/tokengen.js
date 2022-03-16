@@ -3,7 +3,7 @@ const config = require('../config/database');
 
 module.exports.tokengen = (user) => {
     token = jwt.sign({ user },
-        config.secret, {
+        process.env.SECRET_TOKEN, {
             expiresIn: '1h'
         })
     return token;

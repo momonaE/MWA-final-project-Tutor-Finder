@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const config = require('./config/database');
 const cors = require('cors');
+const dotenv = require('dotenv').config()
+
 
 //routes
 
@@ -16,13 +17,13 @@ const teacherRoute = require('./routes/teacherRoutes');
 
 const courseRoute = require('./routes/courseRoutes')
     //database config
-mongoose.connect(config.database, {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true
 });
 
 //mongoose.connect('mongodb://localhost:27017/teach');
 mongoose.connection.on('connected', () => {
-    console.log('connected to database' + config.database);
+    console.log('connected to database' + process.env.DATABASE_URL);
 });
 
 //middleware
@@ -57,6 +58,7 @@ app.use((error, req, res, next) => {
         },
     });
 });
-app.listen(3000, () => {
-    console.log(`Server started on 3000`);
+app.listen(process.env.PORT, () => {
+    console.log(`
+        Server started on 3000 `);
 });

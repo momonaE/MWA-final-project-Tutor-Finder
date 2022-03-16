@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
 
 module.exports.verified = (token) => {
-    return jwt.verify(token, config.secret);
+    return jwt.verify(token, process.env.SECRET_TOKEN);
 }
 module.exports.verified = (token) => {
-    return jwt.verify(token, config.secret);
+    return jwt.verify(token, process.env.SECRET_TOKEN);
 }
