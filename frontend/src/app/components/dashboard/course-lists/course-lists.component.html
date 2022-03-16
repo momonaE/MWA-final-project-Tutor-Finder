@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="card coursecards " *ngFor="let card of courses ">
+        <div class="card coursecards " *ngFor="let card of courses |filter: searchText">
             <div class=" row g ">
                 <div class="col-md-4 ">
                     <img src="../../../../assets//course.jpg " class="img-fluid rounded-start " alt="... ">

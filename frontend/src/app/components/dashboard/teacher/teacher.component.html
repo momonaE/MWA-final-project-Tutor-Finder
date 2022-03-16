@@ -27,16 +27,16 @@
 
         </div>
         <div class="teacherHeader">
-            <p *ngIf="courses.length">Courses You Teach
+            <p *ngIf="courses !=null">Courses You Teach
             </p>
-            <!-- <p *ngIf="" [routerLink]="[ '/courselists']">
+            <p *ngIf="courses==null" [routerLink]="[ '/courselists']">
                 No course Added Yet
 
-            </p> -->
+            </p>
 
         </div>
         <div class=" card coursecards " *ngFor="let card of courses ">
-            <div class=" row g " *ngIf="courses.length">
+            <div class=" row g " *ngIf="courses">
                 <div class="col-md-4 ">
                     <img src="../../../../assets//course.jpg " class="img-fluid rounded-start " alt="... ">
                 </div>

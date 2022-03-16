@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 ///components
 import { AppComponent } from './app.component';
@@ -37,7 +37,7 @@ const MyRoutes:Routes =[
   {path:'courselists',component:CourseListsComponent,canActivate:[AuthGuard,RoleTeacherGuard]},
   {path:'tutor',component:TeacherComponent,canActivate:[AuthGuard,RoleTeacherGuard]},
   {path:"enrolledStudents",component:EnrolledStudentsComponent},
-  {path:'enrollment',component:TeachersComponent,canActivate:[AuthGuard,RoleTeacherGuard]},
+  {path:'enrollment',component:TeachersComponent,canActivate:[AuthGuard,RoleStudentGuard]},
   {path:'**',component:HomeComponent}
  
 
@@ -62,7 +62,8 @@ const MyRoutes:Routes =[
     BrowserModule,
     RouterModule.forRoot(MyRoutes),
     HttpClientModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule ,
+    Ng2SearchPipeModule   
   ],
    providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  ],
     

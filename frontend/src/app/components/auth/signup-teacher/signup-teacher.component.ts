@@ -28,11 +28,8 @@ export class SignupTeacherComponent implements OnInit {
       'phoneNumber': ['', Validators.required],
  
     });
-    this.subscription = this.registerForm?.statusChanges.subscribe((d:any)=>
-{   
-   this.registerForm.get('email')?.valid
-}    
-    )
+ 
+    
   }
 
   ngOnInit(): void {
@@ -73,6 +70,7 @@ export class SignupTeacherComponent implements OnInit {
        });
   }
   emailValidater(control:FormControl):Promise<any>|Observable<any>{
+    
     return new Promise((resolve)=>{
       setTimeout(() => {
         this.authService.verifyEmail(control.value).subscribe((data)=>{
@@ -87,7 +85,7 @@ export class SignupTeacherComponent implements OnInit {
           }
           
    })
-      },5000)
+      },1000)
         
     })
    }

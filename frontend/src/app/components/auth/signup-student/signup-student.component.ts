@@ -25,12 +25,7 @@ export class SignupStudentComponent implements OnInit {
       'phoneNumber': ['', Validators.required],
  
     });
-    this.subscription = this.registerForm?.statusChanges.subscribe((d:any)=>
-{   
-   console.log("============== "+ this.registerForm.get('email')?.valid)
-   this.registerForm.get('email')?.valid
-}    
-    )
+
   }
 
   ngOnInit(): void {

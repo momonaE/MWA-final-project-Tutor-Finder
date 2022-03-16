@@ -16,7 +16,7 @@ export class TeacherComponent implements OnInit {
   fname:string='';
   lname:string='';
   email:string=''
-  flag:boolean=true
+  flag:boolean=false
 
 
    
@@ -24,6 +24,8 @@ export class TeacherComponent implements OnInit {
   constructor(private CourseService:CourseService,private router:Router,private authService:AuthService) { }
 
   ngOnInit(): void {
+    console.log("here"+this.courses)
+
     const data =this.authService.isLoggedIn();
     const userId= (data as any).decodedToken.user._id;
     this. fname= (data as any).decodedToken.user.firstName;
@@ -32,9 +34,12 @@ export class TeacherComponent implements OnInit {
     this. email= (data as any).decodedToken.user.email;
 
     this.CourseService.getSelectedCourse(userId).subscribe((data)=>{
+      if((data as any)==null){
+        this.courses=null
+        return;
+      }
+      console.log((data as any))
       this.courses=(data as any).data.courses
-      console.log("here"+this.courses)
-      this.flag=false;
     });
   }
   
