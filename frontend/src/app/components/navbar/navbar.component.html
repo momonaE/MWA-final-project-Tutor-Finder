@@ -15,10 +15,11 @@
                     <a class="nav-link active " aria-current="page " href="# ">Home</a>
                 </li>
                 <li class="nav-item " [class.links]="navbarCollapsed ">
-                    <a class="nav-link " [routerLinkActive]="[ 'active'] " [routerLink]="[ '/signupStudent'] ">Enroll A student </a>
+                    <a class="nav-link " [routerLinkActive]="[ 'active'] " *ngIf="!(isLoggedIn() && isUserRole() ==='STUDENT') " [routerLink]="[ '/signupStudent']">Enroll As Student </a>
                 </li>
                 <li class="nav-item " [class.links]="navbarCollapsed ">
-                    <a class="nav-link " [routerLinkActive]="[ 'active'] " [routerLink]="[ '/SignupTeacher'] ">Become Tutor</a>
+
+                    <a class="nav-link " [routerLinkActive]="[ 'active'] " *ngIf="!(isLoggedIn() && isUserRole() ==='TEACHER') " [routerLink]="[ '/SignupTeacher']">Become Tutor</a>
                 </li>
                 <!-- <li class="nav-item ">
                     <a class="nav-link disabled " href="# " tabindex="-1 " aria-disabled="true ">Disabled</a>
@@ -26,13 +27,19 @@
             </ul>
             <ul class="navbar-nav ">
                 <li class="nav-item " [class.leftNav]="navbarCollapsed ">
-                    <a class="nav-link " *ngIf="isLoggedIn() ">Profile</a>
+                    <a class="nav-link " *ngIf="(isLoggedIn() && isUserRole() ==='STUDENT')" [routerLink]="[ 'search']">Search</a>
                 </li>
                 <li class="nav-item " [class.leftNav]="navbarCollapsed ">
-                    <a class="nav-link " [class.signinbutton]="navbarCollapsed " [routerLink]="[ '/signin'] " *ngIf="!isLoggedIn() ">Sign In</a>
+                    <a class="nav-link " *ngIf="(isLoggedIn() && isUserRole() ==='STUDENT')" [routerLink]="[ '/enrollment'] ">Your Course</a>
                 </li>
                 <li class="nav-item " [class.leftNav]="navbarCollapsed ">
-                    <a class="nav-link " [class.signinbutton]="navbarCollapsed " (click)="logout() " *ngIf="isLoggedIn() ">Logout</a>
+                    <a class="nav-link " *ngIf="(isLoggedIn() && isUserRole() ==='TEACHER')" [routerLink]="[ '/courselists'] ">Course List</a>
+                </li>
+                <li class="nav-item " [class.leftNav]="navbarCollapsed ">
+                    <a class="nav-link " [class.signinbutton]="navbarCollapsed " [routerLink]="[ '/signin'] " *ngIf="!loggIn ">Sign In</a>
+                </li>
+                <li class="nav-item " [class.leftNav]="navbarCollapsed ">
+                    <a class="nav-link " [class.signinbutton]="navbarCollapsed " (click)="logout() " *ngIf="loggIn">Logout</a>
                 </li>
             </ul>
 

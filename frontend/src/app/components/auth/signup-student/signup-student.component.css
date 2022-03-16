@@ -39,3 +39,12 @@ h3,
     color: red;
     text-align: center;
 }
+
+.is-danger {
+    color: red
+}
+
+.message {
+    color: red;
+    text-align: center;
+}

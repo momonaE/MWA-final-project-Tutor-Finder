@@ -22,3 +22,5 @@ GET  http://localhost:3000/api/teacher/fetch HTTP/1.1
 
 ###
 GET  http://localhost:3000/api/users/protected HTTP/1.1
+###
+GET  http://localhost:3000/api/teacher/enrolledStudent/6231432f2c756f51b1d311e9 HTTP/1.1

@@ -27,7 +27,8 @@ export class StudentService {
   }
 
   getTeachers(input: any): Observable<any> {
-    return this.http.get(this.API_URL + '/api/teacher/search/' + input);
+    console.log(input)
+    return this.http.get(this.API_URL + '/api/teacher/search/' + input.toLowerCase().trim());
   }
 
   sendEnrollment(studentId:string,userId:string,firstName:string,courseTitle:string): Observable<any> {
@@ -35,9 +36,10 @@ export class StudentService {
     return this.http.post(this.API_URL + '/api/student/enroll/', {studentId,userId,firstName,courseTitle})
   }
   
-  getEnrollment(): Observable<any> {
+  getEnrollment(userId:any): Observable<any> {
+    console.log(this.API_URL + '/api/student/checkenroll')
   
-    return this.http.get(this.API_URL + '/api/student/checkenroll/');
+    return this.http.get(this.API_URL + '/api/student/checkenroll/'+userId );
 
   }
 

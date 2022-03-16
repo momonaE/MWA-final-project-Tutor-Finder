@@ -57,18 +57,20 @@ export class SignupTeacherComponent implements OnInit {
         return
 
       }
-     if((data as any).success){
-      store.dispatch(this.authActions.loadedUsers((data as any ).data))
-      this.load=false;
-     
-           this.router.navigate(['tutor'])
-
-    }else{
-      this.load=false;
-
-      this.router.navigate(['/'])
-    }    
-     });
+      if((data as any).success){
+        this.authService.storeInSession((data as any).token, (data as any).data);
+        store.dispatch(this.authActions.loadedUsers((data as any ).data))
+        console.log(store.getState());
+        this.load=false;
+  
+  
+             this.router.navigate(['tutor'])
+  
+      }else{
+           this.router.navigate(['/signupStudent'])
+  
+      }    
+       });
   }
   emailValidater(control:FormControl):Promise<any>|Observable<any>{
     return new Promise((resolve)=>{

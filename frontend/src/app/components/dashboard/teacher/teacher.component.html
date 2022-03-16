@@ -15,7 +15,7 @@
                                 <span>         
                                     <button class="courselistbutton " [routerLink]="[ '/courselists']">Add Course</button>
                                 </span>
-                                <button class="courselistbutton">Enrolled Students</button>
+                                <!-- <button class="courselistbutton">Enrolled Students</button> -->
 
                             </div>
                         </div>
@@ -29,10 +29,10 @@
         <div class="teacherHeader">
             <p *ngIf="courses.length">Courses You Teach
             </p>
-            <p *ngIf="!courses.length" [routerLink]="[ '/courselists']">
+            <!-- <p *ngIf="" [routerLink]="[ '/courselists']">
                 No course Added Yet
 
-            </p>
+            </p> -->
 
         </div>
         <div class=" card coursecards " *ngFor="let card of courses ">

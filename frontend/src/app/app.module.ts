@@ -34,10 +34,10 @@ const MyRoutes:Routes =[
   {path:'SignupTeacher',component:SignupTeacherComponent},
   // {path:'SignupTeacher',component:SignupTeacherComponent,canActivate:[AuthGuard]},
   {path:'signin',component:SigninComponent},
-  {path:'courselists',component:CourseListsComponent},
+  {path:'courselists',component:CourseListsComponent,canActivate:[AuthGuard,RoleTeacherGuard]},
   {path:'tutor',component:TeacherComponent,canActivate:[AuthGuard,RoleTeacherGuard]},
   {path:"enrolledStudents",component:EnrolledStudentsComponent},
-  {path:'enrollment',component:TeachersComponent},
+  {path:'enrollment',component:TeachersComponent,canActivate:[AuthGuard,RoleTeacherGuard]},
   {path:'**',component:HomeComponent}
  
 

@@ -1,0 +1,20 @@
+.courseListheaer {
+    align-items: center;
+    margin-left: 15rem;
+    font-size: 1.25rem;
+    color: #e99542;
+}
+
+.signinbutton {
+    background-color: black !important;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-color: #fff;
+    color: #fff;
+}
+
+.coursebody {
+    margin-bottom: 1.25rem;
+}

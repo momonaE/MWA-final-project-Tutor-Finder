@@ -11,51 +11,57 @@
             <div class="col-md-6">
                 <label for="inputfname" class="form-label">First Name</label>
                 <input type="text" class="form-control" formControlName="firstName" id="inputfname">
-                <!-- <div *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+                <div *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
                     <p class="help is-danger" *ngIf="registerForm.get('firstName')?.hasError('required')">
                         firstName is required.
                     </p>
 
-                </div> -->
+                </div>
             </div>
             <div class="col-md-6">
                 <label for="inputlname" class="form-label">Last Name</label>
                 <input type="text" class="form-control" formControlName="lastName" id="inputlname">
-                <!-- <div *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
+                <div *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
                     <p class="help is-danger" *ngIf="registerForm.get('lastName')?.hasError('required')">
                         lastName is required.
                     </p>
 
-                </div> -->
+                </div>
             </div>
 
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Email</label>
                 <input type="email" class="form-control" formControlName="email" id="inputEmail4">
-                <!-- <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
                     <p class="help is-danger" *ngIf="registerForm.get('email')?.hasError('required')">
                         Email is invalid.
                     </p>
-                    <p class="help is-danger" *ngIf="registerForm.get('email')?.errors?.['exists']">
+                    <!-- <p class="help is-danger" *ngIf="registerForm.get('email')?.errors?.['exists']">
                         Email already exists.
                     </p> -->
-                <!-- </div> -->
+                </div>
 
 
             </div>
             <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">Pass word</label>
                 <input type="password" class="form-control" formControlName="passWord" id="inputPassword4">
-                <!-- <div *ngIf="registerForm.get('passWord')?.invalid && (registerForm.get('passWord')?.dirty || registerForm.get('passWord')?.touched)">
+                <div *ngIf="registerForm.get('passWord')?.invalid && (registerForm.get('passWord')?.dirty || registerForm.get('passWord')?.touched)">
                     <p class="help is-danger" *ngIf="registerForm.get('passWord')?.hasError('required')">
                         passWord is required.
                     </p>
 
-                </div> -->
+                </div>
             </div>
             <div class="col-12">
                 <label for="phonenumber" class="form-label">Phone  Number</label>
                 <input type="number" class="form-control" id="phonenumber" formControlName="phoneNumber" placeholder="Enter Number">
+                <div *ngIf="registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+                    <p class="help is-danger" *ngIf="registerForm.get('phoneNumber')?.hasError('required')">
+                        passWord is required.
+                    </p>
+
+                </div>
             </div>
             <div class="col-12">
                 <button type="submit" *ngIf="load" class="btn btn-primary signinbutton ">

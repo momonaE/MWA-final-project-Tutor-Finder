@@ -11,5 +11,5 @@ router.get('/', fetch);
 
 router.put('/updatecourse', remove);
 router.get('/search/:courseTitle', searchCourse);
-
+router.get('/enrolledStudent/:userId', teacherController.enrolledStudent)
 module.exports = router;

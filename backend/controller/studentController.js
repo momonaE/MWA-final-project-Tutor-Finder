@@ -40,41 +40,22 @@ module.exports.enroll = async(req, res) => {
     const { studentId, userId, firstName, courseTitle } = req.body;
     console.log(req.body)
 
-    const studenttitle = await Student.findOne({
-        'enrolled.courseTitle': courseTitle
-    }).exec();
-    console.log("okay" + studenttitle)
-    if (studenttitle) {
-        return res.json({
-            success: false,
-            data: {},
-            msg: 'already enrollment',
-            status: res.statusCode
-        })
-    }
-
-    const students = await Student.findOne({
+    const studentsnew = await Student.findOne({
         studentId: studentId
     }).exec();
-    if (students) {
+    console.log("herenew" + studentsnew);
 
-        const r = await Student.updateOne({ studentId }, {
-            $addToSet: {
-
-                enrolled: { studentId, userId, firstName, courseTitle }
-            }
-
-        })
-
-    } else {
+    if (studentsnew == null) {
         const result = await new Student({
+            studentId,
             enrolled: [req.body]
         }).save();
+        console.log(result)
         if (result) {
-            res.json({ success: true, data: {}, msg: 'new  enrollment added !', status: res.statusCode })
+            return res.json({ success: true, data: {}, msg: 'new  enrollment added !', status: res.statusCode })
 
         } else {
-            res.json({
+            return res.json({
                 success: false,
                 data: {},
                 msg: 'Failed to add enrollment',
@@ -83,14 +64,48 @@ module.exports.enroll = async(req, res) => {
 
         }
 
+    }
+    const students = await Student.findOne({
+        'enrolled.courseTitle': courseTitle,
+        studentId: studentId
+    }).exec();
+
+    console.log("here" + students);
+
+    if (students) {
+
+
+        return res.json({
+            success: false,
+            data: {},
+            msg: 'already enrollment',
+            status: res.statusCode
+        })
 
     }
 
+    const r = await Student.updateOne({ studentId }, {
+        $addToSet: {
 
+            enrolled: { userId, firstName, courseTitle }
+        }
+
+    })
+
+
+
+    return res.json({
+        success: false,
+        data: r,
+        msg: 'successful',
+        status: res.statusCode
+    })
 
 }
 module.exports.enrolledCourses = async(req, res) => {
-    const result = await Student.find({}).exec();
+    const { userId } = req.params
+    console.log()
+    const result = await Student.find({ studentId: userId }).exec();
     console.log(result)
     return res.json({
         success: false,
@@ -98,6 +113,4 @@ module.exports.enrolledCourses = async(req, res) => {
         msg: 'enrollment',
         status: res.statusCode
     })
-
-
 }

@@ -56,15 +56,17 @@ export class SignupStudentComponent implements OnInit {
       }
    
      if((data as any).success){
-
+      this.authService.storeInSession((data as any).token, (data as any).data);
       store.dispatch(this.authActions.loadedUsers((data as any ).data))
       console.log(store.getState());
       this.load=false;
 
-           this.router.navigate(['/signin'])
+
+           this.router.navigate(['search'])
 
     }else{
-         console.log("not suceful");
+         this.router.navigate(['/signupStudent'])
+
     }    
      });
   }

@@ -3,6 +3,14 @@ const tokengen = require('../tokenGenerator/tokengen');
 
 module.exports.adduser = (req, res, next) => {
     const { firstName, email, lastName, phoneNumber, passWord, role } = req.body;
+    const newUser = new User({
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        email: email,
+        passWord: passWord,
+        role: role
+    })
     const result = User.adduser(
         new User({
             firstName: firstName,
@@ -13,14 +21,23 @@ module.exports.adduser = (req, res, next) => {
             role: role
         }));
 
+    const token = tokengen.tokengen(newUser);
+    console.log(token)
 
     result.then((docs) => {
             if (docs) {
-                res.json({ success: true, data: docs, msg: 'new  user Added !', status: res.statusCode })
+                res.json({
+                    success: true,
+                    data: docs,
+                    token: 'JWT ' + token,
+                    msg: 'new  user Added !',
+                    status: res.statusCode
+                })
 
             } else {
                 res.json({
                     success: false,
+
                     data: {},
                     msg: 'Failed to add user',
                     status: res.statusCode

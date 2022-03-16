@@ -1,5 +1,44 @@
-<div>
-    <p> </p>
+<div class="coursebody">
+    <div class="container shadow min-vh-100 py-4">
+        <!-- <p class="courseListheaer ">Select Course to Teach</p> -->
+        <div class="row">
+            <div class="col-md-2 ">
+                <button class=" signinbutton " [routerLink]="[ '/search'] ">Back</button>
+            </div>
+
+            <div class="col-md-5  ">
+                <p class="courseListheaer ">Enrolled Courses</p>
+
+            </div>
+        </div>
 
 
+        <div class="card coursecards " *ngFor="let r of lists ">
+            <div class=" row g ">
+
+
+                <div class="col-md-11">
+                    <div class="card-body ">
+                        <h5 class="card-title ">Course By {{r.firstName}}</h5>
+                        <p class="card-text catagory m-0 ">
+                            Course Title:
+                            <small class="text-muted " style="color: #e99542; ">{{r.courseTitle}}
+                            </small></p>
+
+
+
+                        <p class="card-text "><small class="text-muted ">
+                            <i class="fa fa-star-o " aria-hidden="true " style="color:#e99542; "></i>
+                        
+</small></p>
+                    </div>
+                </div>
+                <div class="col-md-1 mt-3 ">
+                    <!-- <button class="courselistbutton">Enroll</button> -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

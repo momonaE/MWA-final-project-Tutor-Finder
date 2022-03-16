@@ -1,6 +1,8 @@
 const teacher = require('../models/Teacher');
 const tokengen = require('../tokenGenerator/tokengen');
 const Coursedata = require('../models/Course');
+const Student = require('../models/Student')
+
 module.exports.fetch = async(req, res) => {
     let courses = await teacher.find({ tokengen }).exec()
     if (courses) {
@@ -144,7 +146,8 @@ module.exports.edit = async(req, res) => {
 module.exports.searchCourse = async(req, res) => {
 
     let { courseTitle } = req.params;
-    courseTitle
+
+
     const result = await teacher.find({
             "courses.courseTitle": courseTitle,
         }
@@ -193,8 +196,16 @@ module.exports.searchCourse = async(req, res) => {
         status: res.statusCode
     })
 
+}
 
-
-
-
+module.exports.enrolledStudent = async(req, res) => {
+    const { userId } = req.params
+    const result = await Student.find({ 'enrolled.userId': userId }).exec();
+    console.log(result)
+    return res.json({
+        success: false,
+        data: result,
+        msg: 'enrollment',
+        status: res.statusCode
+    })
 }

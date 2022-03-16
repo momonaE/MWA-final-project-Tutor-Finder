@@ -32,11 +32,12 @@ export class TeacherComponent implements OnInit {
     this. email= (data as any).decodedToken.user.email;
 
     this.CourseService.getSelectedCourse(userId).subscribe((data)=>{
-      console.log((data as any))
       this.courses=(data as any).data.courses
+      console.log("here"+this.courses)
       this.flag=false;
     });
   }
+  
 
   showdesc(){
     this.show=!this.show

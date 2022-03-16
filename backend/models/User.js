@@ -46,7 +46,7 @@ module.exports.comparePassword = async(passWord, userpassword, callback) => {
     console.log(passWord, userpassword);
     await bcrypt.compare(passWord,
         userpassword, (err, isMatch) => {
-            if (err) throw err;
+            if (err) return err;
             callback(null, isMatch);
 
         });

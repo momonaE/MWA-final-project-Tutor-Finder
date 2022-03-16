@@ -1,31 +1,38 @@
 <div class="coursebody">
     <div class="container shadow min-vh-100 py-4">
-        <p class="courseListheaer ">Select Courses</p>
+        <p class="courseListheaer ">Select Available Courses</p>
 
         <div class="row">
             <p class="errormessage ">{{msg}}</p>
+            <div class="col-md-3">
+            </div>
+            <form [formGroup]="searchInput" (ngSubmit)="search()">
 
-            <div class="col-md-5 mx-auto ">
-                <div class="small fw-light "></div>
-                <form [formGroup]="searchInput" (ngSubmit)="search()">
+                <div class="col-md-5 mx-auto ">
+                    <div class="small fw-light "></div>
                     <div class="input-group ">
                         <input value="search" formControlName="search" class="form-control border-end-0 border rounded-pill " type="search " v id="example-search-input " placeholder=" Enter CourseTitle ">
                         <span class="input-group-append ">
                     <button [disabled]="!searchInput.valid" class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5 " type="button ">
                         <i class="fa fa-search searchbutton"></i>
                     </button>
-                </span>
+                    <span class="m-2">
+                        <button class=" courselistbutton ">Search</button>
+
+                    </span>
+                        </span>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="col-md-4 mx-auto">
+                </div>
+            </form>
+
         </div>
         <div class="card coursecards " *ngFor="let teacher of names ">
             <div class=" row g ">
-                <div class="col-md-4 ">
-                    <img src="../../../../assets//course.jpg " class="img-fluid rounded-start " alt="... ">
-                </div>
 
-                <div class="col-md-6 ">
+
+                <div class="col-md-11">
                     <div class="card-body ">
                         <h5 class="card-title ">Course By {{teacher.firstName}}</h5>
                         <p class="card-text catagory m-0 ">
@@ -41,12 +48,11 @@
 
                         <p class="card-text "><small class="text-muted ">
                             <i class="fa fa-star-o " aria-hidden="true " style="color:#e99542; "></i>
-
                         
 </small></p>
                     </div>
                 </div>
-                <div class="col-md-2 mt-3 ">
+                <div class="col-md-1 mt-3 ">
                     <button class="courselistbutton" (click)="enroll(teacher)">Enroll</button>
 
                 </div>
